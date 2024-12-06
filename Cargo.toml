@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-eframe = "0.29.1"
-egui = "0.29.1"
+clap = { version = "4.5.22", features = ["derive"] }
 env_logger = "0.11.5"
+htmd = "0.1.6"
+ratatui = "0.29.0"
+scraper = "0.21.0"
+tui-markdown = "0.2.10"
+ureq = { version = "2.12.1", features = ["native-certs", "native-tls"] }
