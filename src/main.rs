@@ -21,7 +21,9 @@ impl Args {
 
         // Default headers
         let res: String = ureq::get(url)
-            .set("Example-Header", "header value")
+            .set("Accept-Encoding", "gzip, deflate, sdch")
+            .set("Accept-Language", "en-US,en;q=0.8")
+            .set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36")
             .call()?
             .into_string()?;
 
@@ -40,16 +42,18 @@ impl Args {
             .build();
 
         let document = Html::parse_document(&html);
-        let selector = Selector::parse("p")?;
+        let p_selector = Selector::parse("p")?;
 
         // Performance?
         let mut parsed_document = String::new();
-        for element in document.select(&selector) {
+
+        for element in document.select(&p_selector) {
             parsed_document.push_str(&element.html());
         }
 
         let converted_content = converter.convert(&parsed_document)?;
 
+        println!("{}", converted_content);
         Ok(converted_content)
     }
 }
