@@ -1,4 +1,4 @@
-use std::{io, str::FromStr};
+use std::io;
 use ratatui::{
     crossterm::event::{
         self,
@@ -12,24 +12,7 @@ pub fn area(mut terminal: DefaultTerminal, content: String) -> io::Result<()> {
     // Simply represents current scroll location
     let mut vertical_scroll = 0; // from app state
     let text = tui_markdown::from_str(&content);
-
-    let custom = String::from_str(r"██████╗ ███████╗ █████╗ ██████╗ ███████╗██████╗ 
-██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗
-██████╔╝█████╗  ███████║██║  ██║█████╗  ██████╔╝
-██╔══██╗██╔══╝  ██╔══██║██║  ██║██╔══╝  ██╔══██╗
-██║  ██║███████╗██║  ██║██████╔╝███████╗██║  ██║
-╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝
-                                                
-██████╗ ███████╗                                
-██╔══██╗██╔════╝                                
-██████╔╝███████╗                                
-██╔══██╗╚════██║                                
-██║  ██║███████║                                
-╚═╝  ╚═╝╚══════╝      ").unwrap();
-
-
-    let text = tui_markdown::from_str(&custom);
-
+    
     loop {
         let _ = terminal.draw(|frame| {
             // Add text and content here
