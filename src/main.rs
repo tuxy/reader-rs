@@ -52,8 +52,6 @@ impl Args {
         }
 
         let converted_content = converter.convert(&parsed_document)?;
-
-        println!("{}", converted_content);
         Ok(converted_content)
     }
 }
